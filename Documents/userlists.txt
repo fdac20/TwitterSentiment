@@ -21,6 +21,7 @@ User Group - UTK Admins, Faculty, Staff:
         @UTKCoAD
         @UTKSOM
         @tennalum
+        @utknursing
 
 
 User Group - Others
