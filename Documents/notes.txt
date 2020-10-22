@@ -1,0 +1,11 @@
+ratio vs normalized num (vader compound)
+
+could do both and see which we like
+
+
+vader compound:
+    normalized from     -1      to      1
+                        neg     neu     pos
+                                 0
+
+dont let remove_noise tokenize

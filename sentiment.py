@@ -102,4 +102,7 @@ if __name__ == "__main__":
         # custom_tweet = "I ordered just once from TerribleCo, they screwed up, never used the app again."
         custom_tweet = text
         custom_tokens = remove_noise(word_tokenize(custom_tweet))
-        print(custom_tweet, classifier.classify(dict([token, True] for token in custom_tokens)))
+        
+
+
+        # print(custom_tweet, classifier.classify(dict([token, True] for token in custom_tokens)))
