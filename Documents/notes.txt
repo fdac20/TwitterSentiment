@@ -9,3 +9,6 @@ vader compound:
                                  0
 
 dont let remove_noise tokenize
+
+individuals who don't tweet as much may not be properly represented
+probably start more broad then break it down (specific days, other outliers)
