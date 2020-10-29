@@ -1,6 +1,7 @@
 # import SentimentIntensityAnalyzer class 
 # from vaderSentiment.vaderSentiment module. 
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer 
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+import json
   
 # function to print sentiments 
 # of the sentence. 
@@ -35,17 +36,25 @@ def sentiment_scores(sentence):
     
 # Driver code 
 if __name__ == '__main__' : 
+    f = open('dondeplowman.json')
+
+    data = json.load(f)
+
+    for i in data:
+        print (i)
+
+
+
+    # print('\n1st statement :') 
+    # sentence = 'i am very mad and upset this sucks'
   
-    print('\n1st statement :') 
-    sentence = 'i am very mad and upset this sucks'
+    # # function calling 
+    # sentiment_scores(sentence) 
   
-    # function calling 
-    sentiment_scores(sentence) 
+    # print('\n2nd Statement :') 
+    # sentence = 'study is going on as usual'
+    # sentiment_scores(sentence) 
   
-    print('\n2nd Statement :') 
-    sentence = 'study is going on as usual'
-    sentiment_scores(sentence) 
-  
-    print('\n3rd Statement :') 
-    sentence = 'I am vey happy today this is amazing'
-    sentiment_scores(sentence) 
+    # print('\n3rd Statement :') 
+    # sentence = 'I am vey happy today this is amazing'
+    # sentiment_scores(sentence) 

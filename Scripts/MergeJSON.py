@@ -1,10 +1,11 @@
 import json
-import glob
 
-result = []
-for f in glob.glob("*.json"):
-    with open(f, "rb") as infile:
-        result.append(json.load(infile))
+file_list = ['dondeplowman.json']
 
-with open("merged_file.json", "wb") as outfile:
-     json.dump(result, outfile)
+head = []
+with open("result.json", "w") as outfile:
+    for f in file_list:
+        with open(f, 'rb') as infile:
+            file_data = json.load(infile)
+            head += file_data
+    json.dump(head, outfile)
