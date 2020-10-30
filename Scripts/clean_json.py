@@ -1,3 +1,4 @@
+# Run this script in directory with JSON
 
 files = ['DondePlowman.json', 'randyboyd.json', 'tucarpenter.json', 'UTIA_SVP.json', 'KC4UTM.json', 
               'utknoxville.json', 'utk_tce.json', 'utkdos.json', 'ut_admissions.json', 'utk_asc.json', 'UTKCEHHS.json',

@@ -36,7 +36,7 @@ def sentiment_scores(sentence):
     
 # Driver code 
 if __name__ == '__main__' : 
-    f = open('dondeplowman.json')
+    f = open('combined_uni_data.json')
 
     data = json.load(f)
 
