@@ -36,12 +36,15 @@ def sentiment_scores(sentence):
     
 # Driver code 
 if __name__ == '__main__' : 
-    f = open('combined_uni_data.json')
+    f = open('clean_utk_cfs.json')
 
     data = json.load(f)
 
-    for i in data:
-        print (i)
+    # print(data[0]['content'])
+    print(data[0]['content'])
+
+    # for i in data:
+    #     print (i[content])
 
 
 
