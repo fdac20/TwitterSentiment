@@ -1,7 +1,10 @@
 # import SentimentIntensityAnalyzer class 
 # from vaderSentiment.vaderSentiment module. 
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-import json
+import pandas as pd
+import matplotlib.pyplot as plt
+import datetime
+import dateutil.parser
   
 # function to print sentiments 
 # of the sentence. 
@@ -36,28 +39,40 @@ def sentiment_scores(sentence):
     
 # Driver code 
 if __name__ == '__main__' : 
-    f = open('clean_utk_cfs.json')
 
-    data = json.load(f)
+    fields=['date', 'content']
+    d = pd.read_csv('dondeplowman.csv', usecols=fields)
 
-    # print(data[0]['content'])
-    print(data[0]['content'])
+    tweets_df = pd.DataFrame(data=d)
 
-    # for i in data:
-    #     print (i[content])
+    sid_obj = SentimentIntensityAnalyzer() 
+
+    vals = []
+
+    # print(tweets_df)
+    # print(tweets_df['content'])
+    tweets = tweets_df['content'].tolist()
+    for tweet in tweets:
+        sentiment_dict = sid_obj.polarity_scores(tweet)
+        vals.append(sentiment_dict['compound'])
+
+    # print(vals)
+    # print(len(vals))
+
+    tweets_df['compound'] = vals 
+
+    tweets_df['date'] = tweets_df['date'].apply(lambda x: dateutil.parser.parse(x))
 
 
+    # https://chrisalbon.com/python/data_wrangling/pandas_group_data_by_time/
+    tweets_df.index = tweets_df['date']
 
-    # print('\n1st statement :') 
-    # sentence = 'i am very mad and upset this sucks'
-  
-    # # function calling 
-    # sentiment_scores(sentence) 
-  
-    # print('\n2nd Statement :') 
-    # sentence = 'study is going on as usual'
-    # sentiment_scores(sentence) 
-  
-    # print('\n3rd Statement :') 
-    # sentence = 'I am vey happy today this is amazing'
-    # sentiment_scores(sentence) 
+    # print(tweets_df.head())
+
+    # tweets_df.drop(columns=['content'])
+    print(tweets_df)
+    x = tweets_df.drop(columns=['content']).resample('W').mean()
+    print(x)
+
+    plt.plot(range(0, len(x)), x)
+    plt.show()
