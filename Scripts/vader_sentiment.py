@@ -69,5 +69,8 @@ if __name__ == '__main__' :
     # Drop content column and resample on a weekly basis, calculating the mean of each month
     x = tweets_df.drop(columns=['content']).resample('W').mean()
 
+    print(x)
+
+    plt.ylim(-1, 1)
     plt.plot(range(0, len(x)), x)
     plt.show()
