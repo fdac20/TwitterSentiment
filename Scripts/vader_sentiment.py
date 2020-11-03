@@ -40,39 +40,34 @@ def sentiment_scores(sentence):
 # Driver code 
 if __name__ == '__main__' : 
 
+    # Extract content and date fields from csv
     fields=['date', 'content']
     d = pd.read_csv('dondeplowman.csv', usecols=fields)
 
+    # Create dataframe
     tweets_df = pd.DataFrame(data=d)
 
+    # Calculate polarity scores and store compound result into vals
     sid_obj = SentimentIntensityAnalyzer() 
 
     vals = []
 
-    # print(tweets_df)
-    # print(tweets_df['content'])
     tweets = tweets_df['content'].tolist()
     for tweet in tweets:
         sentiment_dict = sid_obj.polarity_scores(tweet)
         vals.append(sentiment_dict['compound'])
 
-    # print(vals)
-    # print(len(vals))
-
+    # Add vals to dataframe
     tweets_df['compound'] = vals 
 
+    # Concert ISO 8601 time format to be readable by pandas
     tweets_df['date'] = tweets_df['date'].apply(lambda x: dateutil.parser.parse(x))
 
-
-    # https://chrisalbon.com/python/data_wrangling/pandas_group_data_by_time/
+    # Set index as the data
     tweets_df.index = tweets_df['date']
 
-    # print(tweets_df.head())
-
-    # tweets_df.drop(columns=['content'])
-    print(tweets_df)
+    # Drop content column and resample on a weekly basis, calculating the mean of each month
     x = tweets_df.drop(columns=['content']).resample('W').mean()
-    print(x)
 
     plt.plot(range(0, len(x)), x)
     plt.show()
