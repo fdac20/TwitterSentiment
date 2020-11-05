@@ -42,7 +42,7 @@ if __name__ == '__main__' :
 
     # Extract content and date fields from csv
     fields=['date', 'content']
-    d = pd.read_csv('combined_csv.csv', usecols=fields)
+    d = pd.read_csv('test.csv', usecols=fields)
 
     # Create dataframe
     tweets_df = pd.DataFrame(data=d)
