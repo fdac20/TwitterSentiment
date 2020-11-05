@@ -26,7 +26,11 @@ User Group - UTK Admins, Faculty, Staff:
 
 
 Example:
+    User:
     snscrape --jsonl twitter-search "from:DondePlowman since:2019-08-01 until:2020-08-11" > dondeplowman.json
+    
+    Keyword:
+    snscrape --jsonl --max-results 1000 twitter-search "'university of tennessee' since:2019-08-01 until:2020-08-01" > utk.json
 
 Bound Dates:
     August 1, 2019 - August 1, 2020
