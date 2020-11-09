@@ -5,7 +5,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import datetime
 import dateutil.parser
-  
+import numpy as np
+
 # function to print sentiments 
 # of the sentence. 
 def sentiment_scores(sentence): 
@@ -42,7 +43,7 @@ if __name__ == '__main__' :
 
     # Extract content and date fields from csv
     fields=['date', 'content']
-    d = pd.read_csv('test.csv', usecols=fields)
+    d = pd.read_csv('combined_csv.csv', usecols=fields)
 
     # Create dataframe
     tweets_df = pd.DataFrame(data=d)
@@ -67,10 +68,16 @@ if __name__ == '__main__' :
     tweets_df.index = tweets_df['date']
 
     # Drop content column and resample on a weekly basis, calculating the mean of each month
-    x = tweets_df.drop(columns=['content']).resample('W').mean()
+    data = tweets_df.drop(columns=['content']).resample('W').mean()
 
-    print(x)
+    # print(data)
 
+    # xticks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    # labels = ['August \'19', 'September \'19', 'October \'19', 'November \'19', 'December \'19', 'January \'20', 'February \'20', 'March \'20', 'April \'20', 'May \'20', 'June \'20', 'July \'20', 'August \'20']
+
+    plt.figure()
+    # plt.plot(range(0, len(data)), data)
     plt.ylim(-1, 1)
-    plt.plot(range(0, len(x)), x)
+    # plt.xticks(xticks, labels)
+    plt.plot(np.arange(1, 56), data)
     plt.show()
