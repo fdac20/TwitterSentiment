@@ -11,4 +11,4 @@ for i,tweet in enumerate(sntwitter.TwitterSearchScraper('from:@billgates + since
     if i > maxTweets :
         break
     csvWriter.writerow([tweet.id, tweet.date, tweet.content])
-    csvFile.close()
+csvFile.close()
