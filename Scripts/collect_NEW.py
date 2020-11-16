@@ -2,13 +2,13 @@ import snscrape.modules.twitter as sntwitter
 import csv
 maxTweets = 3000
 
-csvFile = open('place_result.csv', 'a', newline='', encoding='utf8')
+csvFile = open('tn.csv', 'a', newline='', encoding='utf8')
 
 csvWriter = csv.writer(csvFile)
-csvWriter.writerow(['id','date','tweet',])
+csvWriter.writerow(['id','date','tweet', 'username'])
 
-for i,tweet in enumerate(sntwitter.TwitterSearchScraper('from:@billgates + since:2015-12-02 until:2020-11-05-filter:links -filter:replies').get_items()):
+for i,tweet in enumerate(sntwitter.TwitterSearchScraper("twitter-search:'knoxville tennessee' + since:2019-08-01 until:2020-08-01").get_items()):
     if i > maxTweets :
         break
-    csvWriter.writerow([tweet.id, tweet.date, tweet.content])
+    csvWriter.writerow([tweet.id, tweet.date, tweet.content, tweet.username])
 csvFile.close()

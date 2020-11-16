@@ -2,7 +2,7 @@
 import pandas as pd 
   
 # making data frame from csv file 
-data = pd.read_csv("VFL.csv", index_col = "user/username") 
+data = pd.read_csv("uniKnox_uf.csv", index_col = "username") 
 
 # # dropping passed values 
 #data.drop(["DondePlowman", "randyboyd", "tucarpenter", "UTIA_SVP", "KC4UTM", "utknoxville", "utk_tce", "utkdos", "ut_admissions", 
@@ -27,6 +27,6 @@ data.drop(["tennalum"], inplace = True)
 data.drop(["utknursing"], inplace = True)
 data.drop(["HaslamUT"], inplace = True)
 
-# # display 
+# display 
 print(data)
-data.to_csv("filtered_fileName.csv") 
+data.to_csv("filtered_utk.csv") 
